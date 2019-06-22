@@ -37,15 +37,12 @@ for entry in json_data:
     role = entry[2]
 
     print((name, title, role))
-    
-    cur.execute('INSERT OR IGNORE INTO User (name) VALUES (?)', (name, ) )
-    cur.execute('SELECT id FROM User WHERE name= ?', (name, ) )
+    cur.execute('INSERT OR IGNORE INTO User (name) VALUES (?)', (name, ))
+    cur.execute('SELECT id FROM User WHERE name= ?', (name, ))
     user_id = cur.fetchone()[0]
-
-    cur.execute('INSERT OR IGNORE INTO Course (title) VALUES (?)', (title, ) )
-    cur.execute('SELECT id FROM Course WHERE title= ?', (title, ) )
+    cur.execute('INSERT OR IGNORE INTO Course (title) VALUES (?)', (title, ))
+    cur.execute('SELECT id FROM Course WHERE title= ?', (title, ))
     Course_id = cur.fetchone()[0]
-
-    cur.execute('INSERT OR REPLACE INTO Member (user_id, Course_id, role) VALUES (?, ?, ?)', (user_id, Course_id, role) )
-
+    cur.execute("""INSERT OR REPLACE INTO Member (user_id, Course_id, role)
+    VALUES(?, ?, ?)""", (user_id, Course_id, role))
     conn.commit()
