@@ -13,7 +13,7 @@ api_key = False
 if api_key is False:
     api_key = 42
     serviceurl = "http://py4e-data.dr-chuck.net/json?"
-else :
+else:
     serviceurl = "https://maps.googleapis.com/maps/api/geocode/json?"
 
 # Additional detail for urllib
@@ -33,7 +33,7 @@ ctx.verify_mode = ssl.CERT_NONE
 fh = open("where.data")
 count = 0
 for line in fh:
-    if count > 200 :
+    if count > 200:
         print('Retrieved 200 locations, restart to retrieve more')
         break
 
