@@ -57,8 +57,8 @@ def set_final_num(num1, num2):
     num_ls = list(filter(lambda n: all_num(n) is True, ls))
     if len(num_ls) > 1:
         if num_legal(num_ls) == 1:
-            random_num = randint(int(num_ls[0]), int(num_ls[1]) + 1)
-            range_num = [int(num_ls[0]), int(num_ls[1]) + 1]
+            random_num = randint(int(num_ls[0]), int(num_ls[1]))
+            range_num = [int(num_ls[0]), int(num_ls[1])]
             print('所产生的随机数字区间为: {}'.format(num_ls))
             rest_ls = [random_num, range_num]
             return rest_ls
@@ -70,7 +70,7 @@ def set_final_num(num1, num2):
 def check_num_legal(num, range_num):
     """ 判断游戏进行中, 所输入的数字时候在区间内 """
     ls = range(range_num[0], range_num[1])
-    if num in ls:
+    if range_num[0] <= num <= range_num[1]:
         return True
     else:
         return False
