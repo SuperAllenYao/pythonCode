@@ -14,23 +14,30 @@ class BaseCat(object):
         print('猫都要吃东西')
 
 
-class ProtectedMixin(object):
-    """受保护的类"""
+# class ProtectedMixin(object):
+#     """受保护的类"""
+#
+#     def protected(self):
+#         print('我是受省份级别保护的')
 
-    def protected(self):
-        print('我是受省份级别保护的')
 
-
-class Tiger(BaseCat, ProtectedMixin):
+class Tiger(BaseCat):
     """老虎类 也是猫科动物"""
+
+    def __init__(self, name, color):
+        super().__init__(name)
+        self.color = color
+
+    def show_info(self):
+        print('Tiger: {}, 颜色: {}'.format(self.name, self.color))
 
     def eat(self):
         # 调用父类的方法
-        super(Tiger, self).eat()
+        super().eat()
         print('我还喜欢吃肉,大猪肉')
 
 
-class Panda(BaseCat, ProtectedMixin):
+class Panda(BaseCat):
     """熊猫类 也是猫科动物"""
     pass
 
@@ -62,25 +69,6 @@ class DuanCat(PetCat):
 
 
 if __name__ == '__main__':
-    # 实例化中华田园猫
-    # cat = HuaCat("小黄")
-    # cat.eat()
-    # print('-------------------------------------------')
-    # # 实例化英国短毛猫
-    # cat_d = DuanCat("小辉")
-    # cat_d.eat()
-    #
-    # # 子类的判断
-    # print(issubclass(DuanCat, BaseCat))
-    # print(issubclass(DuanCat, PetCat))
-    # print(issubclass(DuanCat, Tiger))
-    panda = Panda('卧龙小熊猫')
-    panda.eat()
-    panda.protected()
-
-    Tiger = Tiger('华南虎')
-    Tiger.protected()
-    print('------------------------------------')
-    # 验证子类信息
-    print(issubclass(Panda, ProtectedMixin))
-    # print(issubclass(Tiger, ProtectedMixin))
+    tiger = Tiger('华南虎', '黄色')
+    tiger.show_info()
+    tiger.eat()
