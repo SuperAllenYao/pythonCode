@@ -2,10 +2,6 @@
 # -*- coding: utf-8 -*-
 
 
-def pos():
-    ses = input("请输入：")
-    name = ses
-    print(name)
-
-
-pos()
+a = (x for x in range(8))
+b = [x for x in range(8)]
+print(a)
