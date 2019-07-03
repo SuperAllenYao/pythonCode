@@ -5,6 +5,8 @@ import sys
 import pygame
 import pygame.color
 
+# 不知道为什么, VScode老是提示 pygame的拼写错误
+
 # 初始化pygame
 pygame.init()
 
