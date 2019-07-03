@@ -6,7 +6,6 @@ import pygame
 import pygame.color
 
 # 不知道为什么, VScode老是提示 pygame的拼写错误
-
 # 初始化pygame
 pygame.init()
 
@@ -15,7 +14,7 @@ screen = pygame.display.set_mode((500, 500))
 
 # 加载图片
 ball = pygame.image.load('intro_ball.gif')
-red = Color(255, 20, 255)
+red = pygame.Color(255, 20, 255)
 
 # 游戏的主循环
 while True:
