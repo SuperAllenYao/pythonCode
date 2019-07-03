@@ -4,10 +4,12 @@
 
 def log(func):
     """ 记录函数执行的日志 """
+
     def warpper():
         print('-------start-------')
         func()
         print('------end------')
+
     return warpper
 
 

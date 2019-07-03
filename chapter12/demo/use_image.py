@@ -13,8 +13,8 @@ pygame.init()
 screen = pygame.display.set_mode((500, 500))
 
 # 加载图片
-ball = pygame.image.load('intro_ball.gif')
-red = pygame.Color(255, 20, 255)
+ball = pygame.image.load('chapter12/demo/intro_ball.gif')
+red = pygame.Color(255, 20, 20)
 
 # 游戏的主循环
 while True:
@@ -25,7 +25,7 @@ while True:
             sys.exit()
         # 更新状态
         # 画线
-        pygame.draw.line(screen, red, (10, 10), (200, 200))
+        pygame.draw.line(screen, red, (20, 20), (200, 200))
         # 画矩形
         # 绘制
     screen.blit(ball, (100, 100))

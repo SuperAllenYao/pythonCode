@@ -1,3 +1,11 @@
 {
-    "python.pythonPath": "/Library/Frameworks/Python.framework/Versions/3.7/bin/python3"
+    "python.pythonPath": "/Library/Frameworks/Python.framework/Versions/3.7/bin/python3",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "html.format.endWithNewline": true,
+    "python.linting.pep8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "editor.fontSize": 14,
+    "files.trimFinalNewlines": true
 }
