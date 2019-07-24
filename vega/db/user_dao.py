@@ -88,7 +88,6 @@ class UserDao:
         finally:
             if "con" in dir():
                 con.close()
-        pass
 
     # 修改用户信息
     def update(self, id, username, password, email, role_id):
@@ -122,6 +121,22 @@ class UserDao:
         except Exception as e:
             if "con" in dir():
                 con.rollback()
+            print(e)
+        finally:
+            if "con" in dir():
+                con.close()
+
+    # 查询用户ID
+    def search_userid(self, username):
+        try:
+            con = pool.get_connection()
+            cursor = con.cursor()
+            sql = """SELECT id FROM t_user  
+                  WHERE username=%s"""
+            cursor.execute(sql, [username])
+            userid = cursor.fetchone()[0]
+            return userid
+        except Exception as e:
             print(e)
         finally:
             if "con" in dir():

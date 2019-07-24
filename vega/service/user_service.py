@@ -38,3 +38,8 @@ class UserService:
     # 删除用户信息
     def delete_by_id(self, id):
         self.__user_dao.delete_by_id(id)
+
+    # 查询用户ID
+    def search_userid(self, username):
+        userid = self.__user_dao.search_userid(username)
+        return userid
