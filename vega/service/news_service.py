@@ -51,3 +51,17 @@ class NewsService:
     def cache_news(self, id, title, username, type, content, is_top, create_time):
         self.__redis_news_dao.insert(
             id, title, username, type, content, is_top, create_time)
+
+    # 删除缓存的新闻
+    def delete_cache(self, id):
+        self.__redis_news_dao.delete_cache(id)
+
+    # 根据id查找新闻
+    def search_by_id(self, id):
+        result = self.__news_dao.search_by_id(id)
+        return result
+
+    # 更改新闻
+    def update_news(self, id, title, type_id, content_id, is_top):
+        self.__news_dao.update_news(id, title, type_id, content_id, is_top)
+        self.delete_cache(id)
