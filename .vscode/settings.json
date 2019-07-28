@@ -4,9 +4,9 @@
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
     "html.format.endWithNewline": true,
-    "python.linting.pep8Enabled": true,
-    "python.linting.pylintEnabled": false,
-    "editor.fontSize": 14,
+    "editor.fontSize": 16,
     "files.trimFinalNewlines": true,
-    "python.formatting.provider": "yapf"
+    "python.formatting.provider": "yapf",
+    "editor.tabCompletion": "on",
+    "editor.renderWhitespace": "all"
 }
