@@ -8,5 +8,6 @@
     "files.trimFinalNewlines": true,
     "python.formatting.provider": "yapf",
     "editor.tabCompletion": "on",
-    "editor.renderWhitespace": "all"
+    "editor.renderWhitespace": "all",
+    "editor.wordWrap": "on"
 }
