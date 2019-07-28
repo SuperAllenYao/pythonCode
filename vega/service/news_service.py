@@ -39,8 +39,8 @@ class NewsService:
 
     # 添加新闻
     def insert_news(self, title, editor_id, type_id, content_id, is_top):
-        self.__news_dao.insert_news(
-            title, editor_id, type_id, content_id, is_top)
+        self.__news_dao.insert_news(title, editor_id, type_id, content_id,
+                                    is_top)
 
     # 查询用户缓存的记录
     def search_cache(self, id):
@@ -48,9 +48,10 @@ class NewsService:
         return result
 
     # 向redis保存缓存新闻
-    def cache_news(self, id, title, username, type, content, is_top, create_time):
-        self.__redis_news_dao.insert(
-            id, title, username, type, content, is_top, create_time)
+    def cache_news(self, id, title, username, type, content, is_top,
+                   create_time):
+        self.__redis_news_dao.insert(id, title, username, type, content,
+                                     is_top, create_time)
 
     # 删除缓存的新闻
     def delete_cache(self, id):

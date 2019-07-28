@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-
 from db.mysql_db import pool
 
 
@@ -17,7 +16,7 @@ class NewsDao:
                   "WHERE n.state=%s "\
                   "ORDER BY n.create_time DESC "\
                   "LIMIT %s,%s"
-            cursor.execute(sql, ("待审批", (page-1)*10, 10))
+            cursor.execute(sql, ("待审批", (page - 1) * 10, 10))
             result = cursor.fetchall()
             return result
         except Exception as e:
@@ -68,7 +67,7 @@ class NewsDao:
                   "JOIN t_user u ON n.editor_id=u.id "\
                   "ORDER BY n.create_time DESC "\
                   "LIMIT %s,%s"
-            cursor.execute(sql, ((page-1)*10, 10))
+            cursor.execute(sql, ((page - 1) * 10, 10))
             result = cursor.fetchall()
             return result
         except Exception as e:
@@ -174,8 +173,8 @@ class NewsDao:
                   UPDATE t_news SET title=%s, type_id=%s, content_id=%s, is_top=%s, 
                   state=%s, update_time=NOW() WHERE id=%s
                   """
-            cursor.execute(
-                sql, (title, type_id, content_id, is_top, "待审批", id))
+            cursor.execute(sql,
+                           (title, type_id, content_id, is_top, "待审批", id))
             con.commit()
         except Exception as e:
             if "con" in dir():

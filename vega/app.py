@@ -50,18 +50,18 @@ while True:
                         result = __type_service.search_type_list()
                         for index in range(len(result)):
                             one = result[index]
-                            print(Fore.LIGHTBLUE_EX, "\n\t%d.%s" %
-                                  (index+1, one[1]))
+                            print(Fore.LIGHTBLUE_EX,
+                                  "\n\t%d.%s" % (index + 1, one[1]))
                         print(Style.RESET_ALL)
                         opt = input("\n\t类型编号: ")
-                        type_id = result[int(opt)-1][0]
+                        type_id = result[int(opt) - 1][0]
                         # TODO 新闻正闻内容
                         content_id = 100
                         is_top = input("\n\t置顶级别(0-5): ")
                         is_commit = input("\n\t是否提交(Y/N): ")
                         if is_commit == "Y" or is_commit == "y":
-                            __news_service.insert_news(
-                                title, userid, type_id, content_id, is_top)
+                            __news_service.insert_news(title, userid, type_id,
+                                                       content_id, is_top)
                             print("\n\t保存成功(3秒自动返回)")
                             time.sleep(3)
                     elif opt == "2":
@@ -72,25 +72,25 @@ while True:
                             result = __news_service.search_list(page)
                             for index in range(len(result)):
                                 one = result[index]
-                                print(Fore.LIGHTBLUE_EX, "\n\t%d\t%s\t%s\t%s" % (
-                                    index+1, one[1], one[2], one[3]))
+                                print(
+                                    Fore.LIGHTBLUE_EX, "\n\t%d\t%s\t%s\t%s" %
+                                    (index + 1, one[1], one[2], one[3]))
+                            print(Fore.LIGHTBLUE_EX, "\n\t-----------------")
                             print(Fore.LIGHTBLUE_EX,
-                                  "\n\t-----------------")
-                            print(Fore.LIGHTBLUE_EX, "\n\t%d/%d" %
-                                  (page, count_page))
-                            print(Fore.LIGHTRED_EX,  "\n\tback. 返回上一层")
-                            print(Fore.LIGHTRED_EX,  "\n\tprev. 上一页")
-                            print(Fore.LIGHTRED_EX,  "\n\tnext. 下一页")
+                                  "\n\t%d/%d" % (page, count_page))
+                            print(Fore.LIGHTRED_EX, "\n\tback. 返回上一层")
+                            print(Fore.LIGHTRED_EX, "\n\tprev. 上一页")
+                            print(Fore.LIGHTRED_EX, "\n\tnext. 下一页")
                             print(Style.RESET_ALL)
                             opt = input("\n\t输入操作编号: ")
                             if opt == "back":
                                 break
-                            elif opt == 'prev'and page > 1:
+                            elif opt == 'prev' and page > 1:
                                 page -= 1
-                            elif opt == "next"and page < count_page:
+                            elif opt == "next" and page < count_page:
                                 page += 1
                             elif int(opt) >= 1 and int(opt) <= 10:
-                                news_id = result[int(opt)-1][0]
+                                news_id = result[int(opt) - 1][0]
                                 result = __news_service.search_by_id(news_id)
                                 title = result[0]
                                 type = result[1]
@@ -101,16 +101,16 @@ while True:
                                 result = __type_service.search_type_list()
                                 for index in range(len(result)):
                                     one = result[index]
-                                    print(Fore.LIGHTBLUE_EX, "\n\t%d.%s" %
-                                          (index+1, one[1]))
+                                    print(Fore.LIGHTBLUE_EX,
+                                          "\n\t%d.%s" % (index + 1, one[1]))
                                 print(Style.RESET_ALL)
                                 opt = input("\n\t类型编号: ")
-                                type_id = result[int(opt)-1][0]
+                                type_id = result[int(opt) - 1][0]
                                 # TODO 输入新闻的内容
                                 content_id = 100
                                 print("\n\t原置顶级别: %s" % (is_top))
-                                new_is_top = input(
-                                    "\n\t置顶级别(0-5): %s" % (type))
+                                new_is_top = input("\n\t置顶级别(0-5): %s" %
+                                                   (type))
                                 is_commit = input("\n\t是否提交?(Y/N): ")
                                 if is_commit == "Y" or is_commit == "y":
                                     __news_service.update_news(
@@ -141,30 +141,34 @@ while True:
                                 page = 1
                                 while True:
                                     os.system("clear")
-                                    count_page = __news_service.search_unreview_count_page()
+                                    count_page = __news_service.search_unreview_count_page(
+                                    )
                                     result = __news_service.searvh_unreview_list(
                                         page)
                                     for index in range(len(result)):
                                         one = result[index]
-                                        print(Fore.LIGHTBLUE_EX, "\n\t%d\t%s\t%s\t%s" % (
-                                            index+1, one[1], one[2], one[3]))
+                                        print(
+                                            Fore.LIGHTBLUE_EX,
+                                            "\n\t%d\t%s\t%s\t%s" %
+                                            (index + 1, one[1], one[2],
+                                             one[3]))
                                     print(Fore.LIGHTBLUE_EX,
                                           "\n\t-----------------")
-                                    print(Fore.LIGHTBLUE_EX, "\n\t%d/%d" %
-                                          (page, count_page))
-                                    print(Fore.LIGHTRED_EX,  "\n\tback. 返回上一层")
-                                    print(Fore.LIGHTRED_EX,  "\n\tprev. 上一页")
-                                    print(Fore.LIGHTRED_EX,  "\n\tnext. 下一页")
+                                    print(Fore.LIGHTBLUE_EX,
+                                          "\n\t%d/%d" % (page, count_page))
+                                    print(Fore.LIGHTRED_EX, "\n\tback. 返回上一层")
+                                    print(Fore.LIGHTRED_EX, "\n\tprev. 上一页")
+                                    print(Fore.LIGHTRED_EX, "\n\tnext. 下一页")
                                     print(Style.RESET_ALL)
                                     opt = input("\n\t输入操作编号: ")
                                     if opt == "back":
                                         break
-                                    elif opt == 'prev'and page > 1:
+                                    elif opt == 'prev' and page > 1:
                                         page -= 1
-                                    elif opt == "next"and page < count_page:
+                                    elif opt == "next" and page < count_page:
                                         page += 1
                                     elif int(opt) >= 1 and int(opt) <= 10:
-                                        news_id = result[int(opt)-1][0]
+                                        news_id = result[int(opt) - 1][0]
                                         __news_service.update_unreview_news(
                                             news_id)
                                         result = __news_service.search_cache(
@@ -177,36 +181,40 @@ while True:
                                         content = "100"
                                         is_top = result[4]
                                         create_time = str(result[5])
-                                        __news_service.cache_news(news_id,
-                                                                  title, username, type,
-                                                                  content, is_top, create_time)
+                                        __news_service.cache_news(
+                                            news_id, title, username, type,
+                                            content, is_top, create_time)
                             elif opt == "2":
                                 page = 1
                                 while True:
                                     os.system("clear")
-                                    count_page = __news_service.search_count_page()
+                                    count_page = __news_service.search_count_page(
+                                    )
                                     result = __news_service.search_list(page)
                                     for index in range(len(result)):
                                         one = result[index]
-                                        print(Fore.LIGHTBLUE_EX, "\n\t%d\t%s\t%s\t%s" % (
-                                            index+1, one[1], one[2], one[3]))
+                                        print(
+                                            Fore.LIGHTBLUE_EX,
+                                            "\n\t%d\t%s\t%s\t%s" %
+                                            (index + 1, one[1], one[2],
+                                             one[3]))
                                     print(Fore.LIGHTBLUE_EX,
                                           "\n\t-----------------")
-                                    print(Fore.LIGHTBLUE_EX, "\n\t%d/%d" %
-                                          (page, count_page))
-                                    print(Fore.LIGHTRED_EX,  "\n\tback. 返回上一层")
-                                    print(Fore.LIGHTRED_EX,  "\n\tprev. 上一页")
-                                    print(Fore.LIGHTRED_EX,  "\n\tnext. 下一页")
+                                    print(Fore.LIGHTBLUE_EX,
+                                          "\n\t%d/%d" % (page, count_page))
+                                    print(Fore.LIGHTRED_EX, "\n\tback. 返回上一层")
+                                    print(Fore.LIGHTRED_EX, "\n\tprev. 上一页")
+                                    print(Fore.LIGHTRED_EX, "\n\tnext. 下一页")
                                     print(Style.RESET_ALL)
                                     opt = input("\n\t输入操作编号: ")
                                     if opt == "back":
                                         break
-                                    elif opt == 'prev'and page > 1:
+                                    elif opt == 'prev' and page > 1:
                                         page -= 1
-                                    elif opt == "next"and page < count_page:
+                                    elif opt == "next" and page < count_page:
                                         page += 1
                                     elif int(opt) >= 1 and int(opt) <= 10:
-                                        news_id = result[int(opt)-1][0]
+                                        news_id = result[int(opt) - 1][0]
                                         __news_service.delete_by_id(news_id)
                                         __news_service.delete_cache(news_id)
                             elif opt == "back":
@@ -214,10 +222,10 @@ while True:
                     elif opt == "2":
                         while True:
                             os.system("clear")
-                            print(Fore.LIGHTGREEN_EX,  "\n\t1. 添加用户")
-                            print(Fore.LIGHTGREEN_EX,  "\n\t2. 修改用户")
-                            print(Fore.LIGHTGREEN_EX,  "\n\t3. 删除用户")
-                            print(Fore.LIGHTRED_EX,  "\n\tback. 返回上一层")
+                            print(Fore.LIGHTGREEN_EX, "\n\t1. 添加用户")
+                            print(Fore.LIGHTGREEN_EX, "\n\t2. 修改用户")
+                            print(Fore.LIGHTGREEN_EX, "\n\t3. 删除用户")
+                            print(Fore.LIGHTRED_EX, "\n\tback. 返回上一层")
                             print(Style.RESET_ALL)
                             opt = input("\n\t输入操作编号: ")
                             if opt == "back":
@@ -235,43 +243,46 @@ while True:
                                 result = __role_service.search_role_list()
                                 for index in range(len(result)):
                                     one = result[index]
-                                    print(Fore.LIGHTBLUE_EX, "\n\t%d.%s" %
-                                          (index+1, one[1]))
+                                    print(Fore.LIGHTBLUE_EX,
+                                          "\n\t%d.%s" % (index + 1, one[1]))
                                 print(Style.RESET_ALL)
                                 opt = input("\n\t角色编号: ")
-                                role_id = result[int(opt)-1][0]
-                                __user_service.insert(
-                                    username, password, email, role_id)
+                                role_id = result[int(opt) - 1][0]
+                                __user_service.insert(username, password,
+                                                      email, role_id)
                                 print("\n\t添加用户成功 (3秒自动返回)")
                                 time.sleep(3)
                             elif opt == "2":
                                 page = 1
                                 while True:
                                     os.system("clear")
-                                    count_page = __user_service.search_userlist_page()
+                                    count_page = __user_service.search_userlist_page(
+                                    )
                                     result = __user_service.search_list(page)
                                     for index in range(len(result)):
                                         one = result[index]
-                                        print(Fore.LIGHTBLUE_EX, "\n\t%d\t%s\t%s" % (
-                                            index+1, one[1], one[2]))
+                                        print(
+                                            Fore.LIGHTBLUE_EX,
+                                            "\n\t%d\t%s\t%s" %
+                                            (index + 1, one[1], one[2]))
                                     print(Fore.LIGHTBLUE_EX,
                                           "\n\t-----------------")
-                                    print(Fore.LIGHTBLUE_EX, "\n\t%d/%d" %
-                                          (page, count_page))
-                                    print(Fore.LIGHTRED_EX,  "\n\tback. 返回上一层")
-                                    print(Fore.LIGHTRED_EX,  "\n\tprev. 上一页")
-                                    print(Fore.LIGHTRED_EX,  "\n\tnext. 下一页")
+                                    print(Fore.LIGHTBLUE_EX,
+                                          "\n\t%d/%d" % (page, count_page))
+                                    print(Fore.LIGHTRED_EX, "\n\tback. 返回上一层")
+                                    print(Fore.LIGHTRED_EX, "\n\tprev. 上一页")
+                                    print(Fore.LIGHTRED_EX, "\n\tnext. 下一页")
                                     print(Style.RESET_ALL)
                                     opt = input("\n\t输入操作编号: ")
                                     if opt == "back":
                                         break
-                                    elif opt == 'prev'and page > 1:
+                                    elif opt == 'prev' and page > 1:
                                         page -= 1
-                                    elif opt == "next"and page < count_page:
+                                    elif opt == "next" and page < count_page:
                                         page += 1
                                     elif int(opt) >= 1 and int(opt) <= 10:
                                         os.system("clear")
-                                        user_id = result[int(opt)-1][0]
+                                        user_id = result[int(opt) - 1][0]
                                         username = input("\n\t新用户名: ")
                                         password = getpass("\n\t新密码: ")
                                         repassword = getpass("\n\t请再输入一次密码: ")
@@ -282,52 +293,58 @@ while True:
                                             time.sleep(3)
                                             break
                                         email = input("\n\t新邮箱: ")
-                                        result = __role_service.search_role_list()
+                                        result = __role_service.search_role_list(
+                                        )
                                         for index in range(len(result)):
                                             one = result[index]
-                                            print(Fore.LIGHTBLUE_EX, "\n\t%d.%s" %
-                                                  (index+1, one[1]))
+                                            print(
+                                                Fore.LIGHTBLUE_EX,
+                                                "\n\t%d.%s" %
+                                                (index + 1, one[1]))
                                         print(Style.RESET_ALL)
                                         opt = input("\n\t角色编号: ")
-                                        role_id = result[int(opt)-1][0]
+                                        role_id = result[int(opt) - 1][0]
                                         opt = input("\n\t是否保存(Y/N)")
                                         if opt == "Y" or opt == "y":
                                             __user_service.update(
-                                                user_id, username, password, email, role_id)
+                                                user_id, username, password,
+                                                email, role_id)
                                             print("\n\t修改用户成功 (3秒自动返回)")
                                             time.sleep(3)
                             elif opt == "3":
                                 page = 1
                                 while True:
                                     os.system("clear")
-                                    count_page = __user_service.search_userlist_page()
+                                    count_page = __user_service.search_userlist_page(
+                                    )
                                     result = __user_service.search_list(page)
                                     for index in range(len(result)):
                                         one = result[index]
-                                        print(Fore.LIGHTBLUE_EX, "\n\t%d\t%s\t%s" % (
-                                            index+1, one[1], one[2]))
+                                        print(
+                                            Fore.LIGHTBLUE_EX,
+                                            "\n\t%d\t%s\t%s" %
+                                            (index + 1, one[1], one[2]))
                                     print(Fore.LIGHTBLUE_EX,
                                           "\n\t-----------------")
-                                    print(Fore.LIGHTBLUE_EX, "\n\t%d/%d" %
-                                          (page, count_page))
-                                    print(Fore.LIGHTRED_EX,  "\n\tback. 返回上一层")
-                                    print(Fore.LIGHTRED_EX,  "\n\tprev. 上一页")
-                                    print(Fore.LIGHTRED_EX,  "\n\tnext. 下一页")
+                                    print(Fore.LIGHTBLUE_EX,
+                                          "\n\t%d/%d" % (page, count_page))
+                                    print(Fore.LIGHTRED_EX, "\n\tback. 返回上一层")
+                                    print(Fore.LIGHTRED_EX, "\n\tprev. 上一页")
+                                    print(Fore.LIGHTRED_EX, "\n\tnext. 下一页")
                                     print(Style.RESET_ALL)
                                     opt = input("\n\t输入操作编号: ")
                                     if opt == "back":
                                         break
-                                    elif opt == 'prev'and page > 1:
+                                    elif opt == 'prev' and page > 1:
                                         page -= 1
-                                    elif opt == "next"and page < count_page:
+                                    elif opt == "next" and page < count_page:
                                         page += 1
                                     elif int(opt) >= 1 and int(opt) <= 10:
                                         os.system("clear")
-                                        user_id = result[int(opt)-1][0]
+                                        user_id = result[int(opt) - 1][0]
                                         __user_service.delete_by_id(user_id)
                                         print("\n\t删除用户成功 (3秒自动返回)")
                                         time.sleep(3)
-
                     elif opt == "back":
                         break
                     elif opt == "exit":

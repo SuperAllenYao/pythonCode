@@ -11,9 +11,7 @@ __config = {
     "database": "vega"
 }
 try:
-    pool = mysql.connector.pooling.MySQLConnectionPool(
-        **__config,
-        pool_size=10
-    )
+    pool = mysql.connector.pooling.MySQLConnectionPool(**__config,
+                                                       pool_size=10)
 except Exception as e:
     print(e)

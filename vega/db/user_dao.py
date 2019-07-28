@@ -80,7 +80,7 @@ class UserDao:
                   "ON u.role_id=r.id "\
                   "ORDER BY u.id "\
                   "LIMIT %s,%s"
-            cursor.execute(sql, ((page-1)*10, 10))
+            cursor.execute(sql, ((page - 1) * 10, 10))
             result = cursor.fetchall()
             return result
         except Exception as e:
