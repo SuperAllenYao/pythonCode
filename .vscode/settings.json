@@ -9,5 +9,6 @@
     "python.formatting.provider": "yapf",
     "editor.tabCompletion": "on",
     "editor.renderWhitespace": "all",
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "editor.acceptSuggestionOnEnter": "off"
 }
