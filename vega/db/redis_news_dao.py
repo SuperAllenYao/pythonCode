@@ -14,7 +14,7 @@ class RedisNewsDao:
             con.hmset(
                 id, {
                     "title": title,
-                    "aythor": username,
+                    "author": username,
                     "type": type,
                     "content": content,
                     "is_top": is_top,
@@ -32,8 +32,6 @@ class RedisNewsDao:
         con = redis.Redis(connection_pool=pool)
         try:
             con.delete(id)
-            if is_top == 0:
-                con.expire(id, 24 * 60 * 60)
         except Exception as e:
             print(e)
         finally:

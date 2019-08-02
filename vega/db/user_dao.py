@@ -26,7 +26,7 @@ class UserDao:
         try:
             con = pool.get_connection()
             cursor = con.cursor()
-            sql = """SELECT rolename FROM t_user u JOIN t_role r ON u.role_id=r.id
+            sql = """SELECT role FROM t_user u JOIN t_role r ON u.role_id=r.id
                   WHERE u.username=%s"""
             cursor.execute(sql, [username])
             role = cursor.fetchone()[0]

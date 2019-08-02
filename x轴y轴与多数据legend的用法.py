@@ -5,7 +5,7 @@ Created on Mon Apr 15 20:37:01 2019
 
 @author: superallen
 """
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 
 x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 y = [6, 2, 2, 5, 6, 8, 9, 6, 4, 7, 9, 12]

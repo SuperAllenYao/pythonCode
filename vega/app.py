@@ -56,12 +56,15 @@ while True:
                         opt = input("\n\t类型编号: ")
                         type_id = result[int(opt) - 1][0]
                         # TODO 新闻正闻内容
-                        content_id = 100
+                        path = input("\n\t请输入文件路径：")
+                        files = open(path, "r")
+                        content = files.read()
+                        files.close()
                         is_top = input("\n\t置顶级别(0-5): ")
                         is_commit = input("\n\t是否提交(Y/N): ")
                         if is_commit == "Y" or is_commit == "y":
                             __news_service.insert_news(title, userid, type_id,
-                                                       content_id, is_top)
+                                                       content, is_top)
                             print("\n\t保存成功(3秒自动返回)")
                             time.sleep(3)
                     elif opt == "2":
@@ -90,6 +93,7 @@ while True:
                             elif opt == "next" and page < count_page:
                                 page += 1
                             elif int(opt) >= 1 and int(opt) <= 10:
+                                os.system("clear")
                                 news_id = result[int(opt) - 1][0]
                                 result = __news_service.search_by_id(news_id)
                                 title = result[0]
@@ -107,15 +111,17 @@ while True:
                                 opt = input("\n\t类型编号: ")
                                 type_id = result[int(opt) - 1][0]
                                 # TODO 输入新闻的内容
-                                content_id = 100
+                                path = input("\n\t请输入内容路径: ")
+                                files = open(path, "r")
+                                content = files.read()
+                                files.close()
                                 print("\n\t原置顶级别: %s" % (is_top))
-                                new_is_top = input("\n\t置顶级别(0-5): %s" %
-                                                   (type))
+                                new_is_top = input("\n\t置顶级别(0-5): ")
                                 is_commit = input("\n\t是否提交?(Y/N): ")
                                 if is_commit == "Y" or is_commit == "y":
                                     __news_service.update_news(
-                                        news_id, new_title, type_id,
-                                        content_id, new_is_top)
+                                        news_id, new_title, type_id, content,
+                                        new_is_top)
                                     print("\n\t保存成功(3秒自动返回)")
                                     time.sleep(3)
                     elif opt == "back":
@@ -176,9 +182,10 @@ while True:
                                         title = result[0]
                                         username = result[1]
                                         type = result[2]
-                                        content = result[3]
-                                        # TODO 查找新闻正文
-                                        content = "100"
+                                        content_id = result[3]
+                                        # 查找新闻正文
+                                        content = __news_service.search_content_id(
+                                            content_id)
                                         is_top = result[4]
                                         create_time = str(result[5])
                                         __news_service.cache_news(
