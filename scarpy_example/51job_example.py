@@ -3,7 +3,12 @@
 
 import requests
 from lxml import etree
-import json
+from pymongo import MongoClient
+
+client = MongoClient(host="localhost", port=27017)
+# 数据库名称必须使用英文开头，不能用数字开头
+mydb = client['db_51job']
+mycollection = mydb['collection_51job']
 
 # 要请求的URL
 url = "https://search.51job.com/list/040000,000000,0000,00,9,99,python,2,1.html?lang=c&stype=&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&providesalary=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=&dibiaoid=0&address=&line=&specialarea=00&from=&welfare="
@@ -40,14 +45,22 @@ for item in all_div:
     info = {}
     # . 代表的是使用item下的Xpath语句
     # 获取数据的时候，要使用列表索引为0的数据
+    # 插入工作名称数据
     info['jobname'] = item.xpath("./p/span/a/@title")[0]
+    # 插入公司名称数据
     info['company_name'] = item.xpath(".//span[@class='t2']/a/@title")[0]
+    # 插入公司地区数据
     info['company_address'] = item.xpath(".//span[@class='t3']/text()")[0]
+    # 此字段数据有为空的情况，所以需要现判断下抓过来的是不是为空
     temp = item.xpath(".//span[@class='t4']/text()")
     if len(temp) == 0:
+        # 为空则插入“无”
         info['money'] = "无"
     else:
+        # 不为空则插入爬回来的数据
         info['money'] = item.xpath(".//span[@class='t4']/text()")[0]
+    # 插入发布日期数据
     info['date'] = item.xpath(".//span[@class='t5']/text()")[0]
     info_list.append(info)
-print(info_list)
+# 将数据存进mongodb数据库中
+mycollection.insert_many(info_list)
