@@ -3,7 +3,6 @@
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
-    "html.format.endWithNewline": true,
     "editor.fontSize": 16,
     "files.trimFinalNewlines": true,
     "python.formatting.provider": "yapf",
@@ -18,5 +17,10 @@
     },
     "files.autoGuessEncoding": true,
     "editor.suggest.maxVisibleSuggestions": 15,
-    "editor.wordBasedSuggestions": false
+    "editor.wordBasedSuggestions": false,
+    "html.format.indentInnerHtml": true,
+    "html.format.indentHandlebars": true,
+    "code-runner.saveAllFilesBeforeRun": true,
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.clearPreviousOutput": true
 }
