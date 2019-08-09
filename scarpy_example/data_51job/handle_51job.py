@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import requests
-from multiprocessing import Queue
+from queue import Queue
 from lxml import etree
 import threading
 from pymongo import MongoClient
@@ -44,7 +44,6 @@ class CrawlPage(threading.Thread):
                 page = self.page_queue.get(block=False)
                 page_url = "https://search.51job.com/list/000000,000000,0000,00,9,99,python,2," + str(
                     page) + ".html"
-                #?lang=c&stype=&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&providesalary=99&lonlat=0%2C0&radius=-1&ord_field=0&confirmdate=9&fromType=&dibiaoid=0&address=&line=&specialarea=00&from=&welfare="
                 print("当前构造的url为：%s" % page_url)
                 # 请求当前构造的url
                 # 设置代理
@@ -58,7 +57,7 @@ class CrawlPage(threading.Thread):
                 result = requests.get(url=page_url,
                                       headers=self.header,
                                       proxies=proxy)
-                result.encoding = "gbk"
+                result.encoding = "utf-8"
                 # 将我们请求回来的网页文本数据放到队列里面去
                 self.data_queue.put(result.text)
             except:
@@ -135,8 +134,8 @@ def main():
     for page in range(1, 721):
         page_queue.put(page)
 
-    # 打印当前队列的长度
-    # print("当前页码的总量为 %s" % page_queue.qsize())  Mac端不能使用qsize()
+    # 打印当前队列的长度, Mac端不能使用qsize()
+    print("当前页码的总量为 %s" % page_queue.qsize())
 
     # 列表，包含了线程的名称
     crawl_page_list = ["页码处理线程1号", "页码处理线程2号", "页码处理线程3号"]
