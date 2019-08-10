@@ -57,7 +57,7 @@ class CrawlPage(threading.Thread):
                 result = requests.get(url=page_url,
                                       headers=self.header,
                                       proxies=proxy)
-                result.encoding = "utf-8"
+                result.encoding = "gbk"
                 # 将我们请求回来的网页文本数据放到队列里面去
                 self.data_queue.put(result.text)
             except:
