@@ -84,6 +84,7 @@ class HandleDoubanMovieTop250(object):
 
 
 def main():
+    # 测试过程中发现设置了头之后反而出现乱码了
     # header = {
     #     "Accept":
     #     "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
