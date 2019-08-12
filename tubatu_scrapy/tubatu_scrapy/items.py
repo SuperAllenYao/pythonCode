@@ -11,4 +11,17 @@ import scrapy
 class TubatuScrapyItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    # 装修效果图标题
+    content_name = scrapy.Field()
+    # 装修ID
+    content_id = scrapy.Field()
+    # 请求url
+    content_url = scrapy.Field()
+    # 上传者昵称
+    nick_name = scrapy.Field()
+    # 图片url
+    # pic_url = scrapy.Field()
+    # 必须使用此变量
+    image_urls = scrapy.Field()
+    # 图片的名称
+    pic_name = scrapy.Field()

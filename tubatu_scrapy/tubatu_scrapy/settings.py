@@ -51,9 +51,12 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'tubatu_scrapy.middlewares.TubatuScrapyDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    # 'tubatu_scrapy.middlewares.TubatuScrapyDownloaderMiddleware': 543,
+    'tubatu_scrapy.middlewares.MyUserAgent': 300,
+    # 先隐藏一下代理，暂时还没买到代理
+    # 'tubatu_scrapy.middlewares.MyProxy': 301,
+}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
@@ -63,9 +66,10 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'tubatu_scrapy.pipelines.TubatuScrapyPipeline': 300,
-#}
+# 使用piplines 需要在设置里面启用
+ITEM_PIPELINES = {
+    'tubatu_scrapy.pipelines.TubatuScrapyPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
