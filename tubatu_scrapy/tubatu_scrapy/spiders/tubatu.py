@@ -24,16 +24,17 @@ class TubatuSpider(scrapy.Spider):
         for item in pic_item_list:
             info = {}
             info["content_name"] = item.xpath(".//div/a/text()").extract_first()
-            content_url = 'https:' + item.xpath(".//div/a/@href").extract_first()
+            content_url = 'https:' + item.xpath(
+                ".//div/a/@href").extract_first()
             info["content_id"] = content_id_search.search(content_url).group(1)
-            info["content_ajax_url"] = "https://xiaoguotu.to8to.com/case/list?a2=0&a12=&a11=" + str(
+            info[
+                "content_ajax_url"] = "https://xiaoguotu.to8to.com/case/list?a2=0&a12=&a11=" + str(
                 info["content_id"]) + "&a1=0&a17=1"
             # 使用 yield 来发送这个异步请求
             # 使用 scrapy.Request 发送请求
             # 回调函数，只写方法的名称，不需要调用方法
             yield scrapy.Request(url=info["content_ajax_url"],
-                                 callback=self.handle_pic_parse,
-                                 meta=info)
+                                 callback=self.handle_pic_parse, meta=info)
         # 页码的逻辑
         if response.xpath("//a[@id='nextpageid']"):
             now_page = int(
