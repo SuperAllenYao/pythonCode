@@ -3,10 +3,10 @@
 
 from colorama import Fore, Style
 from getpass import getpass
-from service.user_service import UserService
-from service.news_service import NewsService
-from service.role_service import RoleService
-from service.type_service import TypeService
+from vega.service.user_service import UserService
+from vega.service.news_service import NewsService
+from vega.service.role_service import RoleService
+from vega.service.type_service import TypeService
 import os
 import sys
 import time
@@ -55,7 +55,6 @@ while True:
                         print(Style.RESET_ALL)
                         opt = input("\n\t类型编号: ")
                         type_id = result[int(opt) - 1][0]
-                        # TODO 新闻正闻内容
                         path = input("\n\t请输入文件路径：")
                         files = open(path, "r")
                         content = files.read()
@@ -77,7 +76,7 @@ while True:
                                 one = result[index]
                                 print(
                                     Fore.LIGHTBLUE_EX, "\n\t%d\t%s\t%s\t%s" %
-                                    (index + 1, one[1], one[2], one[3]))
+                                                       (index + 1, one[1], one[2], one[3]))
                             print(Fore.LIGHTBLUE_EX, "\n\t-----------------")
                             print(Fore.LIGHTBLUE_EX,
                                   "\n\t%d/%d" % (page, count_page))
@@ -110,7 +109,6 @@ while True:
                                 print(Style.RESET_ALL)
                                 opt = input("\n\t类型编号: ")
                                 type_id = result[int(opt) - 1][0]
-                                # TODO 输入新闻的内容
                                 path = input("\n\t请输入内容路径: ")
                                 files = open(path, "r")
                                 content = files.read()
