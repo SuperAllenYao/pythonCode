@@ -3,7 +3,7 @@
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "editor.formatOnType": true,
-    "editor.fontSize": 28,
+    "editor.fontSize": 16,
     "files.trimFinalNewlines": true,
     "python.formatting.provider": "yapf",
     "editor.tabCompletion": "on",
@@ -26,6 +26,5 @@
     "code-runner.runInTerminal": true,
     "code-runner.fileDirectoryAsCwd": true,
     "code-runner.ignoreSelection": true,
-    "editor.fontLigatures": true,
-    "editor.fontWeight": "bold"
+    "editor.fontLigatures": true
 }

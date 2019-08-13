@@ -1,8 +1,9 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import scrapy
 import re
 import json
-from tubatu_scrapy.tubatu_scrapy.items import TubatuScrapyItem
+from tubatu_scrapy.items import TubatuScrapyItem
 
 
 class TubatuSpider(scrapy.Spider):
@@ -34,7 +35,8 @@ class TubatuSpider(scrapy.Spider):
             # 使用 scrapy.Request 发送请求
             # 回调函数，只写方法的名称，不需要调用方法
             yield scrapy.Request(url=info["content_ajax_url"],
-                                 callback=self.handle_pic_parse, meta=info)
+                                 callback=self.handle_pic_parse,
+                                 meta=info)
         # 页码的逻辑
         if response.xpath("//a[@id='nextpageid']"):
             now_page = int(

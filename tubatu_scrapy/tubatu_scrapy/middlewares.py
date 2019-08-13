@@ -128,7 +128,7 @@ class MyUserAgent(object):
             "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24",
             "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"
         ]
-        # 使用random.choice在列表中随机一个结果出来
+        # 使用random.choice在列表中隝机一个结果出来
         agent = random.choice(user_agent_list)
         # 把一个User-Agent加到头部里面去
         request.headers['User-Agent'] = agent
@@ -141,5 +141,5 @@ class MyUserAgent(object):
 #         # ?????????
 #         proxy_name_pass = '???:??'.encode('utf-8')
 #         encode_pass_name = base64.b64encode(proxy_name_pass)
-#         # Basic后面是有一个空格的
+#         # Basic坎面是有一个空格的
 #         request.headers['Proxy-Authorization'] = 'Basic ' + encode_pass_name

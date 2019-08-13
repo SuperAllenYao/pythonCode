@@ -212,29 +212,3 @@ function anti(string, key) {
     var estring = hex(string);
     return charRun(estring)
 }
-
-function xredirect(name, value, url) {
-    var date = new Date();
-    date.setTime(date.getTime() + 2592000000);
-    var expires = "; expires=" + date.toUTCString();
-    document.cookie = name + "=" + value + expires + "; path=/";
-    if (document.cookie.indexOf(name) === -1 && navigator.cookieEnabled) {
-        alert('请修改浏览器设置,允许cookie缓存')
-    } else {
-        if (url == '') {
-            var url = location.href;
-            if (location.protocol != 'https:') {
-                url = 'https:' + window.location.href.substring(window.location.protocol.length)
-            }
-        } else {
-            if (location.protocol != 'https:') {
-                url = 'https:' + url
-            }
-        }
-        var ulen = url.indexOf('#');
-        if (ulen !== -1) {
-            url = url.substring(0, ulen)
-        }
-        location.replace(url)
-    }
-}
