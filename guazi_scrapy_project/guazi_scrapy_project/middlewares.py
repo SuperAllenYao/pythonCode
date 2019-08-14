@@ -126,12 +126,13 @@ class GuaziDownloaderMiddleware(object):
             js = execjs.compile(self.f_read)
             js_return = js.call('anti', string, key)
             cookie_value = {'antipas=': js_return}
-            print('当前使用的cookies为：%s' % cookie_value)
             request.cookies = cookie_value
             # 把这个请求重新返回调度器
             return request
         elif response.status == 200:
             return response
+        elif '客官请求太频繁啦' in response.text:
+            return request
 
 
 class MyUserAgent(object):

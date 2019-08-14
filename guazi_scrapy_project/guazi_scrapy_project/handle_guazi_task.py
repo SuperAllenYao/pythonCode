@@ -4,9 +4,7 @@
 import requests
 import execjs
 import re
-from guazi_project.guazi_scrapy_project.guazi_scrapy_project.mongo_db import \
- mongo
-
+from guazi_scrapy_project.guazi_scrapy_project.mongo_db import mongo
 # 请求城市的接口
 url = "https://www.guazi.com/www/buy"
 # 去掉cookie值，如长时间使用同一cookie值，对方会发现并对爬虫进行屏蔽

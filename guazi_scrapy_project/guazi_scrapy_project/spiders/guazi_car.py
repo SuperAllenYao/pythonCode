@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from guazi_project.guazi_scrapy_project.guazi_scrapy_project.mongo_db import \
-    mongo
+from guazi_scrapy_project.mongo_db import mongo
 import re
-from guazi_project.guazi_scrapy_project.guazi_scrapy_project.items import GuaziScrapyProjectItem
+from guazi_scrapy_project.items import GuaziScrapyProjectItem
 
 
 class GuaziCarSpider(scrapy.Spider):
@@ -19,7 +18,6 @@ class GuaziCarSpider(scrapy.Spider):
                 break
             if '_id' in task:
                 task.pop('_id')
-            print('当前获取到的task为：%s' % task)
             if task['item_type'] == 'list_item':
                 # 这个request对象代表了一个http的请求
                 # 会经由downloader去执行，从而产生一个response
@@ -50,7 +48,6 @@ class GuaziCarSpider(scrapy.Spider):
 
     # 报错回调方法
     def handle_err(self, failure):
-        print(failure)
         # failure.request.meta,来获取失败的task
         # 把失败的请求扔回task
         mongo.save_task('guazi_task', failure.request.meta)
@@ -84,14 +81,13 @@ class GuaziCarSpider(scrapy.Spider):
                 r"https://www.guazi.com/(.*?)/(.*?)/o(\d+)i7")
             # 返回的是列表，列表里面包含的是数组
             value = value_search.findall(response.url)[0]
-            print(value)
             # 下一页的链接
             response.request.meta[
                 'task_url'] = "https://www.guazi.com/%s/%s/o%si7" % (
-                    value[0], value[1], str(int(value[2] + 1)))
+                    value[0], value[1], str(int(value[2]) + 1))
             yield scrapy.Request(url=response.request.meta['task_url'],
                                  callback=self.handle_car_item,
-                                 meta=response.requset.meta,
+                                 meta=response.request.meta,
                                  dont_filter=True,
                                  errback=self.handle_err)
 

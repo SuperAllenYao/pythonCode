@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import pymongo
 
 
@@ -8,7 +9,6 @@ class HandleMongoDB(object):
 
     # 存储task逻辑
     def save_task(self, collection_name, task):
-        print('当前存储的task为：%s' % task)
         collection = self.db[collection_name]
         task = dict(task)
         collection.insert_one(task)
@@ -19,8 +19,7 @@ class HandleMongoDB(object):
         task = collection.find_one_and_delete({})
         return task
 
-    def save_data(self, collect_name, data):
-        print('当前存储的数据为：%s' % data)
+    def save_data(self, collection_name, data):
         collection = self.db[collection_name]
         data = dict(data)
         collection.update({'car_id': data['car_id']}, data, True)
