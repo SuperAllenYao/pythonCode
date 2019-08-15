@@ -1,10 +1,10 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import requests
 import execjs
 import re
 from guazi_scrapy_project.guazi_scrapy_project.mongo_db import mongo
+
 # 请求城市的接口
 url = "https://www.guazi.com/www/buy"
 # 去掉cookie值，如长时间使用同一cookie值，对方会发现并对爬虫进行屏蔽
@@ -59,7 +59,7 @@ if "正在打开中,请稍后" in result.text:
             for brand in brand_list:
                 info = {}
                 info['task_url'] = 'https://www.guazi.com/' + city[0] + '/' + \
-                       brand[0] + '/' + 'o1i7'
+                                   brand[0] + '/' + 'o1i7'
                 info['city_name'] = city[1]
                 info['brand_name'] = brand[1]
                 info['item_type'] = 'list_item'
