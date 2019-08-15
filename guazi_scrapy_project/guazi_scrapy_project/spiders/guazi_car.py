@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from guazi_scrapy_project.mongo_db import mongo
+from guazi_scrapy_project.guazi_scrapy_project.mongo_db import mongo
 import re
-from guazi_scrapy_project.items import GuaziScrapyProjectItem
+from guazi_scrapy_project.guazi_scrapy_project.items import GuaziScrapyProjectItem
 
 
 class GuaziCarSpider(scrapy.Spider):
