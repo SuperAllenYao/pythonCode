@@ -1,0 +1,15 @@
+p{
+    background-color: brown;
+    font-size: 23px;
+    color: bisque;
+}
+.p1{
+    font-family: "Al Nile", serif;
+}
+body{
+    background-color: bisque;
+    background-image: url("Photo by Pacto Visual (cWOzOnSoh6Q).jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left 50%;
+}
